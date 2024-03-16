@@ -2,6 +2,18 @@ import { Alert, Button, Card, CircularProgress, Container, Grid, Paper, TextFiel
 import { useWss } from "blustai-react-core";
 import { useEffect,  useState } from "react";
 
+import { styled } from '@mui/material/styles';
+import { Box, ButtonBase,CardMedia, CardContent,Typography } from "@mui/material";
+const Product = ({ product }) => <ButtonBase sx={{width:"200px",m:2}} href={product?.link} target="_blank"><Card  >
+   <CardMedia component="img" image={product?.thumbnail || 'https://blust-images.s3.amazonaws.com/public/noimage.jpeg'} src={product?.thumbnail} />
+   <CardContent>
+       <Typography variant="caption">{product?.title}</Typography>
+       <Typography variant="body2">{product?.description}</Typography>
+       <Typography variant="subtitle1">{product?.price}</Typography>
+   </CardContent>
+</Card></ButtonBase>
+const VisuallyHiddenInput = styled('input')({ clip: 'rect(0 0 0 0)', clipPath: 'inset(50%)', height: 1, overflow: 'hidden', position: 'absolute', bottom: 0, left: 0, whiteSpace: 'nowrap',  width: 1});
+
 const service_id = import.meta.env.VITE_TOOL_ID //SET YOUR TOOL ID HERE 
 
 const CustomTool = () => {
